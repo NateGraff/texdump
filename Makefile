@@ -8,10 +8,10 @@ ifeq ($(shell uname -s),Darwin)
 		TEXBIN = /Library/TeX/texbin
 endif
 
-$(TEX) = $(TEXBIN)/tex
+TEX = $(TEXBIN)/tex
 
-hello.dvi: hello.tex
-	$(tex) hello.tex
+hello.out: hello.tex hello.in
+	$(TEX) hello.tex
 
 .PHONY: clean-hello
 clean-hello:
@@ -19,7 +19,7 @@ clean-hello:
 clean: clean-hello
 
 .PHONY: all
-all: hello.dvi
+all: hello.out
 
 .PHONY: clean
 clean:

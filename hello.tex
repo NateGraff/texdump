@@ -1,8 +1,26 @@
 Hello, world!
 
-\newwrite\filehandle
-\immediate\openout\filehandle=hello.out
-\immediate\write\filehandle{Hello another world!}
-\closeout\filehandle
+% redefine iterate to allow \loop \if \else \repeat
+\def\iterate{\let\next\relax
+    \body \let\next\iterate \fi \next}
+
+% allocate handles
+\newread\inputhandle
+\newwrite\outputhandle
+
+% open files
+\immediate\openin\inputhandle=hello.in
+\immediate\openout\outputhandle=hello.out
+
+\loop
+\ifeof\inputhandle
+\else
+\read\inputhandle to \inputline
+\immediate\write\outputhandle{\inputline}
+\repeat
+
+% close file handles
+\closeout\outputhandle
+\closeout\inputhandle
 
 \bye
