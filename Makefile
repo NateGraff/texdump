@@ -15,7 +15,7 @@ hello.dvi: hello.tex
 
 .PHONY: clean-hello
 clean-hello:
-	rm -f hello.dvi hello.log
+	rm -f hello.dvi hello.log hello.out
 clean: clean-hello
 
 .PHONY: all

@@ -1,2 +1,8 @@
 Hello, world!
+
+\newwrite\filehandle
+\immediate\openout\filehandle=hello.out
+\immediate\write\filehandle{Hello another world!}
+\closeout\filehandle
+
 \bye
